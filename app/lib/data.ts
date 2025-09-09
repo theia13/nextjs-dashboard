@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import postgres from "postgres";
 import {
   CustomerField,
@@ -43,6 +45,8 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
+  noStore();
+
   try {
     // You can probably combine these into a single SQL query
     // However, we are intentionally splitting them to demonstrate
